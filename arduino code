@@ -1,0 +1,29 @@
+
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(10,9,6,5,4,3); //define lcdpins
+int temp = A0; // sensor pin
+float tem; //the data
+void setup(){
+  	lcd.begin(16, 2);
+    lcd.setCursor(4,0);
+  	lcd.print("SMART ARABIC");
+  	lcd.setCursor(6,1);
+  	lcd.print("PROJECTS");
+  	delay(6000);
+  	lcd.clear();
+  	lcd.setCursor(0,0);
+  	lcd.print("made by : ");
+  	lcd.setCursor(0,1);
+  	lcd.print("BILAL HASSAN");
+  	delay(2000);
+  	lcd.clear();
+}
+void loop(){
+  tem = analogRead(A0); //read from snsor
+  tem = tem * 0.48828125; // Measure the heat
+  lcd.clear();
+  lcd.print("temp :");
+  lcd.setCursor(0,6);
+  lcd.print(tem);
+  delay(200);
+}
